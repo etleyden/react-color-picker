@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import Slider from './Slider.js';
 import './App.css';
 
 function App() {
+
+  //let color = this.useState([0, 0, 0]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="colorDisplay"></div>
+      <div id="sliderContainer">
+        <Slider colorProp="red" maxValue={255} defaultValue={100}/>
+      </div>
     </div>
   );
 }
