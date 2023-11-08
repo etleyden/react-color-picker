@@ -1,28 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import "./slider.css";
 
-class Slider extends React.Component {
-	const [currentVal, setVal] = useState(0);
-	constructor(props) {
-		super(props);
-			//figuring out how to attach the state to the component
-		setVal(props.defaultValue);
-	}
-	handleChange(e) {
+export const Slider = props => {
+	const {colorProp, maxValue, value, onValueChange} = props;
+	//component state lets us display it next to the component
+	const [currentVal, setVal] = useState(value);
+	useEffect(() => { setVal(value); }, [value]);
+
+	function updateState(e) {
 		console.log(e);
 		setVal(e.target.valueAsNumber);
+		onValueChange(currentVal);
 	}
-	render() {
-		return (
+
+	return (
 			<div className="sliderContainer">
-				<p>{this.props.colorProp}: {this.state.currentVal}</p>
-				<input id={this.props.colorProp + "_slider"}
+				<label htmlFor={colorProp + "_slider"}>{colorProp}: {currentVal}</label>
+				<input id={colorProp + "_slider"}
 					type="range" 
-					onInput={this.handleChange}
-					max={this.props.maxValue}
-					value={this.props.defaultVal}/>
+					onInput={updateState}
+					max={maxValue}
+					value={currentVal}/>
 			</div>
 			);
-	}
 }
 
 

@@ -1,0 +1,4 @@
+.sliderContainer > * {
+	display: inline;
+	margin: 10px;
+}
