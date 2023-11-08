@@ -14,14 +14,14 @@ export const Slider = props => {
 	}
 
 	return (
-			<div className="sliderContainer">
-				<label htmlFor={colorProp + "_slider"}>{colorProp}: {currentVal}</label>
-				<input id={colorProp + "_slider"}
+			<tr className="sliderContainer">
+				<td><label className="sliderLabel" htmlFor={colorProp + "_slider"}>{colorProp}: {currentVal}</label></td>
+				<td><input id={colorProp + "_slider"}
 					type="range" 
 					onInput={updateState}
 					max={maxValue}
-					value={currentVal}/>
-			</div>
+					value={currentVal}/></td>
+			</tr>
 			);
 }
 

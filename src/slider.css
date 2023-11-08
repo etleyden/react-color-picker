@@ -1,4 +1,7 @@
-.sliderContainer > * {
-	display: inline;
-	margin: 10px;
+.sliderContainer > td {
+	text-align: right;
+	color: white;
+}
+.sliderLabel > label {
+	right: 0;
 }
