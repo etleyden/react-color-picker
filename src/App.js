@@ -1,5 +1,6 @@
 import Slider from './Slider.js';
 import React, {useState, useRef, useEffect} from 'react';
+import './ColorModel.js';
 import './App.css';
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
   useEffect(() => {
     setHexString(computeHexString(color));
     appRef.current.style.backgroundColor = "rgb(" + color[0] + "," + color[1] + ","+ color[2] + ")";
-    console.log(color, hexColor);
   });
 
   return (
@@ -35,6 +35,15 @@ function App() {
             <Slider ref={blueRef} colorProp="blue" maxValue={255} value={color[2]} onValueChange={(new_val) => {
               setColor([color[0], color[1], new_val]);
             }}/>
+            {/*<Slider ref={hueRef} colorProp="hue" maxValue={360} value={} onValueChange={(new_val) => {
+
+            }}/> 
+            <Slider ref={satRef} colorProp="saturation" maxValue={100} value={} onValueChange={(new_val) => {
+
+            }}/>
+            <Slider ref={brightRef} colorProp="brightness" maxValue={100} value={} onValueChange={(new_val) => {
+
+            }}/>*/}
           </tbody>
         </table>
     </div>
