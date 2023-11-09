@@ -8,9 +8,8 @@ export const Slider = props => {
 	useEffect(() => { setVal(value); }, [value]);
 
 	function updateState(e) {
-		console.log(e);
 		setVal(e.target.valueAsNumber);
-		onValueChange(currentVal);
+		onValueChange(e.target.valueAsNumber);
 	}
 
 	return (
