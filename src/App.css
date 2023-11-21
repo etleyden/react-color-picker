@@ -45,6 +45,11 @@
   color: white;
   font-size: 32px;
 }
+#clipboard{
+  text-align: center;
+  color: white;
+  font-size: 13px;
+}
 
 #tableContainer {
     background-color: rgba(0, 0, 0, 0.5);

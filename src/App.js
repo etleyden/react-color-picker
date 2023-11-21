@@ -10,6 +10,8 @@ function App() {
     colorRef.current = new ColorModel({red: 100, green: 100, blue: 100}, "rgb");
   }
   const [hexValue, setHexValue] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
+
 
   //TODO: functional components should not utilize `useRef()` --> find alternatives
   const appRef = useRef();
@@ -25,14 +27,32 @@ function App() {
     appRef.current.style.backgroundColor = "rgb(" + colorRef.current.red + "," + colorRef.current.green + ","+ colorRef.current.blue + ")";
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(hexValue)
+      .then(() => setIsCopied(true))
+      .catch((err) => console.error('Failed to copy to clipboard', err));
+
+    // Reset the copied status after a short delay
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
   return (
     <div className="App" ref={appRef}>
       <div id="tableContainer">
         <table id="sliderTable" >
           <thead id="colorDisplay">
-              <tr><td colSpan="2">{hexValue}</td></tr>
+              <tr><td colSpan="2" onClick={copyToClipboard} style={{ cursor: 'pointer' }}>
+                {hexValue}
+                
+              </td></tr>
           </thead>
+
+          <thead id="clipboard">
+            <tr><td colSpan="2" >{isCopied && <div>Copied to clipboard!</div>}</td></tr>
+          </thead>
+          
           <tbody>
+            
             <Slider colorProp="red" maxValue={255} value={colorRef.current.red} onValueChange={updateModel}/>
             <Slider colorProp="green" maxValue={255} value={colorRef.current.green} onValueChange={updateModel}/>
             <Slider colorProp="blue" maxValue={255} value={colorRef.current.blue} onValueChange={updateModel}/>
@@ -47,6 +67,7 @@ function App() {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 }
