@@ -15,6 +15,7 @@ function App() {
   const appRef = useRef();
 
   useEffect(() => {
+    setHexValue(colorRef.current.getHex());
     appRef.current.style.backgroundColor = "rgb(" + colorRef.current.red + "," + colorRef.current.green + ","+ colorRef.current.blue + ")";
   }, []);
 
@@ -26,15 +27,13 @@ function App() {
 
   return (
     <div className="App" ref={appRef}>
-        <table id="sliderTable">
+      <div id="tableContainer">
+        <table id="sliderTable" >
           <thead id="colorDisplay">
               <tr><td colSpan="2">{hexValue}</td></tr>
           </thead>
           <tbody>
-            <Slider colorProp="red" maxValue={255} value={() => {
-              console.log("Updating sliders");
-              return colorRef.current.red
-            }} onValueChange={updateModel}/>
+            <Slider colorProp="red" maxValue={255} value={colorRef.current.red} onValueChange={updateModel}/>
             <Slider colorProp="green" maxValue={255} value={colorRef.current.green} onValueChange={updateModel}/>
             <Slider colorProp="blue" maxValue={255} value={colorRef.current.blue} onValueChange={updateModel}/>
             <Slider colorProp="hue" maxValue={360} value={colorRef.current.hue} onValueChange={updateModel}/> 
@@ -47,6 +46,7 @@ function App() {
             <Slider colorProp="key" maxValue={100} value={colorRef.current.key} onValueChange={updateModel}/>
           </tbody>
         </table>
+      </div>
     </div>
   );
 }

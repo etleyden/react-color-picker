@@ -22,7 +22,7 @@ export const Slider = props => {
 
 	return (
 			<tr className="sliderContainer">
-				<td><label className="sliderLabel" htmlFor={colorProp + "_slider"}>{colorProp}: {currentVal}</label></td>
+				<td className="labelContainer"><label className="sliderLabel" htmlFor={colorProp + "_slider"}>{colorProp}: {currentVal}</label></td>
 				<td><input id={colorProp + "_slider"}
 					type="range" 
 					onInput={updateState}
